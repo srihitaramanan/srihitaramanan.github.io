@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Srihita Ramanan — Projects & Work</title>
+<meta name="description" content="Personal site and project archive of Srihita Ramanan." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600;9..144,800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --bg: #f4f1ea;
+    --ink: #1a1a1a;
+    --muted: #5a564e;
+    --line: #1a1a1a;
+    --accent: #c2410c;
+    --paper: #ebe6db;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 400;
+    line-height: 1.55;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(26, 26, 26, 0.05) 1px, transparent 0);
+    background-size: 24px 24px;
+  }
+
+  ::selection { background: var(--accent); color: var(--bg); }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2.5rem;
+  }
+
+  /* ---------- TOP BAR ---------- */
+  .topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.75rem 2.5rem;
+    border-bottom: 1px solid var(--line);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  .topbar .mark {
+    font-family: 'Fraunces', serif;
+    font-weight: 800;
+    font-size: 1rem;
+    font-style: italic;
+    letter-spacing: -0.01em;
+    text-transform: none;
+  }
+
+  .topbar nav { display: flex; gap: 2rem; }
+
+  .topbar nav a {
+    color: var(--ink);
+    text-decoration: none;
+    position: relative;
+    transition: color 0.2s;
+  }
+
+  .topbar nav a:hover { color: var(--accent); }
+
+  .topbar nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 0;
+    width: 0; height: 1px;
+    background: var(--accent);
+    transition: width 0.3s ease;
+  }
+
+  .topbar nav a:hover::after { width: 100%; }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    padding: 6rem 0 5rem;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+  }
+
+  .hero-meta {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    margin-bottom: 3rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(3.5rem, 9vw, 8rem);
+    font-weight: 300;
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+    margin-bottom: 2rem;
+  }
+
+  .hero h1 .accent {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+  }
+
+  .hero-sub {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: end;
+    margin-top: 3rem;
+  }
+
+  .hero-sub p {
+    font-size: 1.15rem;
+    max-width: 38ch;
+    color: var(--muted);
+  }
+
+  .hero-sub p .underline-quirky {
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+  }
+
+  .arrow-down {
+    justify-self: end;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    text-align: right;
+    line-height: 1.8;
+  }
+
+  .arrow-down span {
+    display: block;
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+    color: var(--ink);
+    animation: bob 2.2s ease-in-out infinite;
+  }
+
+  @keyframes bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+  }
+
+  /* ---------- WORK ---------- */
+  .work {
+    padding: 5rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--muted);
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--ink);
+  }
+
+  .project {
+    display: grid;
+    grid-template-columns: 80px 1fr 2fr 1fr;
+    gap: 2rem;
+    padding: 2.25rem 0;
+    border-top: 1px solid rgba(26, 26, 26, 0.15);
+    align-items: baseline;
+    text-decoration: none;
+    color: var(--ink);
+    transition: padding 0.35s ease, background 0.35s ease;
+    position: relative;
+  }
+
+  .project:last-child { border-bottom: 1px solid rgba(26, 26, 26, 0.15); }
+
+  .project:hover {
+    padding-left: 1.5rem;
+    background: var(--paper);
+  }
+
+  .project:hover .project-title { color: var(--accent); font-style: italic; }
+  .project:hover .project-arrow { transform: translateX(8px); opacity: 1; }
+
+  .project-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+
+  .project-year {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+
+  .project-title {
+    font-size: 1.85rem;
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    transition: color 0.3s, font-style 0.3s;
+  }
+
+  .project-desc {
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .project-arrow {
+    font-family: 'JetBrains Mono', monospace;
+    text-align: right;
+    opacity: 0.4;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about {
+    padding: 5rem 0;
+    border-bottom: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 5rem;
+  }
+
+  .about-body p {
+    font-size: 1.4rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    max-width: 45ch;
+  }
+
+  .about-body p:first-child::first-letter {
+    font-size: 4rem;
+    float: left;
+    line-height: 0.85;
+    padding: 0.25rem 0.5rem 0 0;
+    font-weight: 800;
+    color: var(--accent);
+  }
+
+  .stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 2rem;
+  }
+
+  .stack span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 0.4rem 0.8rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+  }
+
+  /* ---------- OFF THE CLOCK ---------- */
+  .offclock {
+    padding: 5rem 0;
+    border-bottom: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 5rem;
+    position: relative;
+  }
+
+  .offclock-body {
+    font-size: 1.25rem;
+    line-height: 1.55;
+    max-width: 50ch;
+    color: var(--ink);
+  }
+
+  .offclock-body em {
+    font-weight: 400;
+    color: var(--accent);
+  }
+
+  .offclock-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+
+  .offclock-cards .card {
+    border: 1px solid var(--line);
+    padding: 1.25rem;
+    background: var(--paper);
+    transition: transform 0.3s ease;
+  }
+
+  .offclock-cards .card:hover {
+    transform: translateY(-4px) rotate(-1deg);
+  }
+
+  .offclock-cards .card .icon {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .offclock-cards .card .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    margin-bottom: 0.25rem;
+  }
+
+  .offclock-cards .card .value {
+    font-size: 1.05rem;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    padding: 3rem 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+  }
+
+  footer .links { display: flex; gap: 1.5rem; }
+  footer a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+  footer a:hover { border-color: var(--accent); }
+
+  /* ---------- ENTRANCE ANIM ---------- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  .reveal.d1 { animation-delay: 0.1s; }
+  .reveal.d2 { animation-delay: 0.25s; }
+  .reveal.d3 { animation-delay: 0.4s; }
+  .reveal.d4 { animation-delay: 0.55s; }
+
+  @keyframes rise {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 768px) {
+    .container, .topbar { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .hero { padding: 3.5rem 0; }
+    .hero-sub { grid-template-columns: 1fr; gap: 2rem; }
+    .arrow-down { justify-self: start; text-align: left; }
+    .project { grid-template-columns: 50px 1fr; gap: 0.5rem 1rem; }
+    .project-desc, .project-arrow { grid-column: 2; }
+    .project-year { grid-column: 2; }
+    .about { grid-template-columns: 1fr; gap: 2rem; }
+    .offclock { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 0; }
+    .offclock-cards { grid-template-columns: 1fr; }
+    .topbar nav { gap: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="mark">Your Name</div>
+  <nav>
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#life">Life</a>
+    <a href="mailto:you@example.com">Contact</a>
+  </nav>
+</header>
+
+<main>
+
+  <section class="hero container">
+    <div class="hero-meta reveal d1">
+      <span>Portfolio / Vol. 01</span>
+      <span>Fremont, CA</span>
+      <span>Est. 2026</span>
+    </div>
+
+    <h1 class="reveal d2">
+      Building things <br />
+      that are <span class="accent">small,</span> <br />
+      <span class="accent">strange</span> &amp; useful.
+    </h1>
+
+    <div class="hero-sub reveal d3">
+      <p>
+        I'm a developer who likes to make <span class="underline-quirky">side projects</span>
+        with sharp edges and a sense of humor. This is the archive — every experiment,
+        prototype, and finished thing in one place.
+      </p>
+      <div class="arrow-down">
+        Scroll for work
+        <span>↓</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="work container" id="work">
+    <div class="section-label">In Progress · 2026</div>
+
+    <a class="project" href="#">
+      <div class="project-num">001</div>
+      <div class="project-title">DocuMentor</div>
+      <div class="project-desc">A production-grade REST API for document question-answering. Upload PDFs, ask in natural language, get answers with citations grounded in your documents. Spring Boot 3, PostgreSQL + pgvector, Spring AI.</div>
+      <div class="project-arrow">View →</div>
+    </a>
+  </section>
+
+  <section class="about container" id="about">
+    <div class="section-label" style="margin-bottom: 0; align-self: start;">About</div>
+    <div class="about-body">
+      <p>
+        I'm a full-stack developer based in Fremont, CA. I care about software that feels
+        handcrafted — code I'd be happy to read a year from now.
+      </p>
+      <p style="font-size: 1rem; color: var(--muted);">
+        Currently building DocuMentor, a RAG-powered document Q&amp;A API in Java.
+        Interested in distributed systems, search, and the unglamorous plumbing that
+        makes good products possible. I spend a few hours coding every day — usually
+        early mornings before the world wakes up.
+      </p>
+      <div class="stack">
+        <span>Java</span>
+        <span>Spring Boot</span>
+        <span>PostgreSQL</span>
+        <span>pgvector</span>
+        <span>REST APIs</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="offclock container" id="life">
+    <div class="section-label" style="margin-bottom: 0; align-self: start;">Off the Clock</div>
+    <div>
+      <p class="offclock-body">
+        Outside the terminal, you'll find me with my <em>husband</em> and my <em>poodle</em>,
+        usually somewhere new — a trail, a tucked-away café, a town we've never driven
+        through. Weekends are for <em>wandering</em>; the rest of the week is for
+        building.
+      </p>
+      <div class="offclock-cards">
+        <div class="card">
+          <div class="icon">🐩</div>
+          <div class="label">Co-pilot</div>
+          <div class="value">One very good poodle</div>
+        </div>
+        <div class="card">
+          <div class="icon">⌨️</div>
+          <div class="label">Daily coding</div>
+          <div class="value">A few focused hours</div>
+        </div>
+        <div class="card">
+          <div class="icon">🗺️</div>
+          <div class="label">Weekends</div>
+          <div class="value">Exploring with the family</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="container">
+    <div>© 2026 Srihita Ramanan</div>
+    <div class="links">
+      <a href="https://github.com/srihitaramanan" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/srihitaramanan/">LinkedIn</a>
+      <a href="mailto:srihitaramanan@gmail.com">Email</a>
+    </div>
+  </footer>
+
+</main>
+
+</body>
+</html>
